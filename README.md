@@ -72,9 +72,9 @@ Keep the terminal open. Use **Ctrl+C** in that terminal to stop the watcher. Res
 
 ## Current limits
 
-The last recorded synthetic evaluation passed 13/13 cases, but that small set does not establish reliability on all real mail. The live rules remain conservative, and messages sent before a rule change are not automatically reprocessed. Review labels and drafts in Gmail before relying on them.
+The current synthetic evaluation passes 13/13 cases and the unit suite passes 7/7 tests. These checks do not establish reliability on all real mail. The live rules remain conservative, and messages processed before a rule change are not automatically reprocessed. Review labels and drafts in Gmail before relying on them.
 
-The latest change makes Telegram report each completed watch check, including no-mail checks and Gmail check failures. Restart the watcher to load it, then confirm a status message arrives in Telegram.
+Telegram watch notifications have been confirmed working, including the no-new-mail status. A successful no-mail check says that EIRA checked Gmail and found nothing new to process.
 
 ## Development checks
 

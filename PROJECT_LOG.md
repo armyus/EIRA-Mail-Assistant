@@ -5,7 +5,7 @@
 - Personal Gmail assistant for one account; Gmail OAuth is configured locally.
 - Five-minute watch mode can label messages and create unsent reply drafts. It has processed real inbox messages; no automatic send path exists.
 - Telegram bot and chat configuration were set in the user's PowerShell environment. Telegram sends aggregate status/action text only.
-- Latest code change: send a Telegram update after every completed watch check, including no new mail, and after a failed Gmail check. The owner restarted the watcher; next confirm a Telegram status arrives.
+- Telegram notifications were confirmed working: the owner received “EIRA checked Gmail. No new messages to process.”
 - Latest real-message behavior observed before that change: a message was marked **Needs review**, no reply draft was created, and the watcher was stopped.
 
 ## Product decisions
@@ -28,7 +28,8 @@
 - Optional Telegram Bot API notifier, disabled unless both `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` are configured.
 - The watcher now reports every completed check to Telegram, including no-new-mail checks; failed Gmail checks also send a retry status.
 - Removed generated project `__pycache__` directories, empty `.qodo` scaffolding, and the unused WhatsApp notifier module. Kept runtime dependencies, OAuth files, local processing state, test cases, and tests.
-- The last recorded synthetic evaluation passed 13/13 cases. This was before the most recent urgency and per-check notification changes; those changes have not been tested yet.
+- Verification on 2026-10-13: unit tests passed 7/7; synthetic evaluation passed 13/13 cases, including urgent mail, prompt injection, ambiguous messages, and unknown facts.
+- The user confirmed that the Telegram no-new-mail notification arrives. The repository was clean and synced with `origin/main` at review time.
 
 ## Important constraints
 
@@ -36,4 +37,5 @@
 - Messages are not reprocessed automatically after a rule change because the SQLite store suppresses duplicate processing. An already processed message may need manual label correction.
 - The 13-case synthetic evaluation is small and cannot establish real-world classification reliability.
 - Keep Gmail OAuth files and Telegram bot tokens private; do not put them in source files or chat.
+- Gmail/Telegram integrations use the owner's local credentials and configuration. A successful test suite does not substitute for reviewing Gmail labels and unsent drafts during normal use.
 
