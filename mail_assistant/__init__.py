@@ -1,0 +1,1 @@
+"""Personal Gmail assistant prototype."""
