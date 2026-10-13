@@ -37,6 +37,3 @@
 - The 13-case synthetic evaluation is small and cannot establish real-world classification reliability.
 - Keep Gmail OAuth files and Telegram bot tokens private; do not put them in source files or chat.
 
-## Current next step
-
-Confirm Telegram receives a status for a check with no new mail. Review any future labels and drafts in Gmail. Broaden synthetic evaluation and run the existing test suite before treating recent classifier and notification changes as verified.
